@@ -1,0 +1,7 @@
+kill -9 $(ps -Af | grep 'gunicorn' | awk '{print $2}')
+
+select distinct LEFT( host, ( LOCATE( ':', host ) - 1 ) ) AS ipAddress from information_schema.processlist;
+
+grep version file.json |  awk '{print $NF}' | grep -Eo "\\d+\\.\\d+\.\d+"| awk '{print $1; exit}'
+
+awk '{ sum += $1 } END { print sum }' num | awk '{printf "%0.2f\n", $1}'
